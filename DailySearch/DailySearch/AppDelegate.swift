@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // iOS 13 미만
             window = UIWindow(frame: UIScreen.main.bounds)
             window?.backgroundColor = .clear
-            window?.rootViewController = IntroViewController()
+            window?.rootViewController = IntroViewController.instance()
             window?.makeKeyAndVisible()
             return true
         }
