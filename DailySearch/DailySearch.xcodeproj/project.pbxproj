@@ -15,6 +15,13 @@
 		982E2B6F23A3BDC100CD60EC /* DailySearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982E2B6E23A3BDC100CD60EC /* DailySearchTests.swift */; };
 		982E2B7A23A3BE7400CD60EC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 982E2B7923A3BE7400CD60EC /* README.md */; };
 		982E2B7D23A3C23200CD60EC /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982E2B7C23A3C23200CD60EC /* IntroViewController.swift */; };
+		9859143823A3C66F00798708 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9859143723A3C66F00798708 /* BaseViewController.swift */; };
+		9859143A23A3C73100798708 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9859143923A3C73100798708 /* BaseView.swift */; };
+		9859143C23A3C7BD00798708 /* DailySearchColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9859143B23A3C7BD00798708 /* DailySearchColor.swift */; };
+		9859143E23A3C9A700798708 /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9859143D23A3C9A700798708 /* BaseNavigationViewController.swift */; };
+		9859144023A3CA7300798708 /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9859143F23A3CA7300798708 /* IntroViewController.xib */; };
+		9859144423A3CAED00798708 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9859144323A3CAED00798708 /* ExtensionUIView.swift */; };
+		9859144723A3CBD800798708 /* ExtensionNSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9859144623A3CBD800798708 /* ExtensionNSObject.swift */; };
 		DF06F5960224551E26B0AA83 /* libPods-DailySearch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B24EAEA8911FA86554E32A /* libPods-DailySearch.a */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +49,13 @@
 		982E2B7023A3BDC100CD60EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		982E2B7923A3BE7400CD60EC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		982E2B7C23A3C23200CD60EC /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		9859143723A3C66F00798708 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		9859143923A3C73100798708 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		9859143B23A3C7BD00798708 /* DailySearchColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySearchColor.swift; sourceTree = "<group>"; };
+		9859143D23A3C9A700798708 /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
+		9859143F23A3CA7300798708 /* IntroViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
+		9859144323A3CAED00798708 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
+		9859144623A3CBD800798708 /* ExtensionNSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNSObject.swift; sourceTree = "<group>"; };
 		ABCF15821E6EB20B241E722A /* Pods-DailySearchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailySearchTests.release.xcconfig"; path = "Target Support Files/Pods-DailySearchTests/Pods-DailySearchTests.release.xcconfig"; sourceTree = "<group>"; };
 		CC1781236F308883FF6DD263 /* Pods-DailySearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailySearch.debug.xcconfig"; path = "Target Support Files/Pods-DailySearch/Pods-DailySearch.debug.xcconfig"; sourceTree = "<group>"; };
 		D5458B6063B97C35858BD1F2 /* libPods-DailySearchTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DailySearchTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,9 +148,48 @@
 		982E2B7B23A3C22100CD60EC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				982E2B7C23A3C23200CD60EC /* IntroViewController.swift */,
+				9859143523A3C64C00798708 /* Intro */,
+				9859143423A3C5FA00798708 /* Common */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		9859143423A3C5FA00798708 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				9859143B23A3C7BD00798708 /* DailySearchColor.swift */,
+				9859144223A3CADF00798708 /* Extension */,
+				9859143623A3C66500798708 /* Base */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		9859143523A3C64C00798708 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				982E2B7C23A3C23200CD60EC /* IntroViewController.swift */,
+				9859143F23A3CA7300798708 /* IntroViewController.xib */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
+		9859143623A3C66500798708 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				9859143D23A3C9A700798708 /* BaseNavigationViewController.swift */,
+				9859143723A3C66F00798708 /* BaseViewController.swift */,
+				9859143923A3C73100798708 /* BaseView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		9859144223A3CADF00798708 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9859144323A3CAED00798708 /* ExtensionUIView.swift */,
+				9859144623A3CBD800798708 /* ExtensionNSObject.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +278,7 @@
 				982E2B6423A3BDC000CD60EC /* LaunchScreen.storyboard in Resources */,
 				982E2B6123A3BDC000CD60EC /* Assets.xcassets in Resources */,
 				982E2B7A23A3BE7400CD60EC /* README.md in Resources */,
+				9859144023A3CA7300798708 /* IntroViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +344,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				982E2B7D23A3C23200CD60EC /* IntroViewController.swift in Sources */,
+				9859143C23A3C7BD00798708 /* DailySearchColor.swift in Sources */,
+				9859143823A3C66F00798708 /* BaseViewController.swift in Sources */,
+				9859143A23A3C73100798708 /* BaseView.swift in Sources */,
 				982E2B5823A3BDBF00CD60EC /* AppDelegate.swift in Sources */,
+				9859143E23A3C9A700798708 /* BaseNavigationViewController.swift in Sources */,
+				9859144723A3CBD800798708 /* ExtensionNSObject.swift in Sources */,
+				9859144423A3CAED00798708 /* ExtensionUIView.swift in Sources */,
 				982E2B5A23A3BDBF00CD60EC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
