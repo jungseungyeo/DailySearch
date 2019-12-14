@@ -21,19 +21,19 @@ final class SearchDocumentModel: BaseModel {
     public private(set) var typeName: String?
     
     public private(set) var contents: String?
-    public private(set) var dateTime: Date?
-    public private(set) var thumbnail: URL?
+    public private(set) var dateTime: String?
+    public private(set) var thumbnail: String?
     public private(set) var title: String?
-    public private(set) var url: URL?
+    public private(set) var url: String?
     
     override func mapping(map: Map) {
         super.mapping(map: map)
         
         contents <- map["contents"]
-        dateTime <- (map["datetime"], DateTransform())
-        thumbnail <- (map["thumbnail"], URLTransform())
+        dateTime <- map["datetime"]
+        thumbnail <- map["thumbnail"]
         title <- map["title"]
-        url <- (map["url"], URLTransform())
+        url <- map["url"]
         
         typeName <- map["cafename"]
         
