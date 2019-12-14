@@ -26,6 +26,8 @@
 		9859144023A3CA7300798708 /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9859143F23A3CA7300798708 /* IntroViewController.xib */; };
 		9859144423A3CAED00798708 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9859144323A3CAED00798708 /* ExtensionUIView.swift */; };
 		9859144723A3CBD800798708 /* ExtensionNSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9859144623A3CBD800798708 /* ExtensionNSObject.swift */; };
+		98972D2623A47216001BB4E9 /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98972D2523A47216001BB4E9 /* SearchAPI.swift */; };
+		98972D2823A47230001BB4E9 /* SearchNetworker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98972D2723A47230001BB4E9 /* SearchNetworker.swift */; };
 		DF06F5960224551E26B0AA83 /* libPods-DailySearch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B24EAEA8911FA86554E32A /* libPods-DailySearch.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,8 @@
 		9859143F23A3CA7300798708 /* IntroViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
 		9859144323A3CAED00798708 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 		9859144623A3CBD800798708 /* ExtensionNSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNSObject.swift; sourceTree = "<group>"; };
+		98972D2523A47216001BB4E9 /* SearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPI.swift; sourceTree = "<group>"; };
+		98972D2723A47230001BB4E9 /* SearchNetworker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNetworker.swift; sourceTree = "<group>"; };
 		ABCF15821E6EB20B241E722A /* Pods-DailySearchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailySearchTests.release.xcconfig"; path = "Target Support Files/Pods-DailySearchTests/Pods-DailySearchTests.release.xcconfig"; sourceTree = "<group>"; };
 		CC1781236F308883FF6DD263 /* Pods-DailySearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailySearch.debug.xcconfig"; path = "Target Support Files/Pods-DailySearch/Pods-DailySearch.debug.xcconfig"; sourceTree = "<group>"; };
 		D5458B6063B97C35858BD1F2 /* libPods-DailySearchTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DailySearchTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				9806BA7223A3D02E0059A480 /* DailySearchService.swift */,
+				98972D2423A47208001BB4E9 /* API */,
 				9806BA7123A3CFE90059A480 /* Networker */,
 			);
 			path = SDK;
@@ -122,6 +127,7 @@
 		9806BA7123A3CFE90059A480 /* Networker */ = {
 			isa = PBXGroup;
 			children = (
+				98972D2723A47230001BB4E9 /* SearchNetworker.swift */,
 				9806BA6F23A3CFC80059A480 /* Networker.swift */,
 			);
 			path = Networker;
@@ -226,6 +232,14 @@
 				9806BA7723A3D1440059A480 /* ExtensionUIAlertController.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		98972D2423A47208001BB4E9 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				98972D2523A47216001BB4E9 /* SearchAPI.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,11 +396,13 @@
 				982E2B7D23A3C23200CD60EC /* IntroViewController.swift in Sources */,
 				9859143C23A3C7BD00798708 /* DailySearchColor.swift in Sources */,
 				9859143823A3C66F00798708 /* BaseViewController.swift in Sources */,
+				98972D2823A47230001BB4E9 /* SearchNetworker.swift in Sources */,
 				9859143A23A3C73100798708 /* BaseView.swift in Sources */,
 				982E2B5823A3BDBF00CD60EC /* AppDelegate.swift in Sources */,
 				9806BA7023A3CFC80059A480 /* Networker.swift in Sources */,
 				9806BA7823A3D1440059A480 /* ExtensionUIAlertController.swift in Sources */,
 				9859143E23A3C9A700798708 /* BaseNavigationViewController.swift in Sources */,
+				98972D2623A47216001BB4E9 /* SearchAPI.swift in Sources */,
 				9859144723A3CBD800798708 /* ExtensionNSObject.swift in Sources */,
 				9859144423A3CAED00798708 /* ExtensionUIView.swift in Sources */,
 				9806BA7623A3D11A0059A480 /* NetworkError.swift in Sources */,
