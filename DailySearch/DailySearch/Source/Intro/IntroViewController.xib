@@ -17,9 +17,25 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="linsaengLogo" translatesAutoresizingMaskIntoConstraints="NO" id="VhY-RS-NLP">
+                    <rect key="frame" x="137.5" y="243.5" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="i8Y-5g-aA8"/>
+                        <constraint firstAttribute="height" constant="100" id="nMj-7Z-12V"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="VhY-RS-NLP" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-40" id="bMx-Jy-onP"/>
+                <constraint firstItem="VhY-RS-NLP" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pK2-RB-Sk6"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="132" y="154"/>
         </view>
     </objects>
+    <resources>
+        <image name="linsaengLogo" width="595" height="842"/>
+    </resources>
 </document>
