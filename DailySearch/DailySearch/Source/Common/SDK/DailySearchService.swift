@@ -13,12 +13,13 @@ import Alamofire
 final public class DailySearchService: NSObject {
 
     public var commonHeader: HTTPHeaders {
-        let headers = HTTPHeaders()
+        var headers = HTTPHeaders()
+        headers["Authorization"] = "KakaoAK e6ee92b352b11581c9a306e5dd81e37d"
         return headers
     }
 
     private var apiHost: String {
-        return ""
+        return "dapi.kakao.com"
     }
 
     public var apiURL: URL {
