@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		273D519F698F0C32AD9FBA64 /* libPods-DailySearchTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5458B6063B97C35858BD1F2 /* libPods-DailySearchTests.a */; };
+		9806BA7023A3CFC80059A480 /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806BA6F23A3CFC80059A480 /* Networker.swift */; };
+		9806BA7323A3D02E0059A480 /* DailySearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806BA7223A3D02E0059A480 /* DailySearchService.swift */; };
+		9806BA7623A3D11A0059A480 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806BA7523A3D11A0059A480 /* NetworkError.swift */; };
+		9806BA7823A3D1440059A480 /* ExtensionUIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806BA7723A3D1440059A480 /* ExtensionUIAlertController.swift */; };
 		982E2B5823A3BDBF00CD60EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982E2B5723A3BDBF00CD60EC /* AppDelegate.swift */; };
 		982E2B5A23A3BDBF00CD60EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982E2B5923A3BDBF00CD60EC /* SceneDelegate.swift */; };
 		982E2B6123A3BDC000CD60EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 982E2B6023A3BDC000CD60EC /* Assets.xcassets */; };
@@ -38,6 +42,10 @@
 /* Begin PBXFileReference section */
 		182A4E5C3847E80373ECB896 /* Pods-DailySearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailySearch.release.xcconfig"; path = "Target Support Files/Pods-DailySearch/Pods-DailySearch.release.xcconfig"; sourceTree = "<group>"; };
 		88B24EAEA8911FA86554E32A /* libPods-DailySearch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DailySearch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9806BA6F23A3CFC80059A480 /* Networker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
+		9806BA7223A3D02E0059A480 /* DailySearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySearchService.swift; sourceTree = "<group>"; };
+		9806BA7523A3D11A0059A480 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		9806BA7723A3D1440059A480 /* ExtensionUIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIAlertController.swift; sourceTree = "<group>"; };
 		982E2B5423A3BDBF00CD60EC /* DailySearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailySearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		982E2B5723A3BDBF00CD60EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		982E2B5923A3BDBF00CD60EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +110,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9806BA6E23A3CFB00059A480 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				9806BA7223A3D02E0059A480 /* DailySearchService.swift */,
+				9806BA7123A3CFE90059A480 /* Networker */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		9806BA7123A3CFE90059A480 /* Networker */ = {
+			isa = PBXGroup;
+			children = (
+				9806BA6F23A3CFC80059A480 /* Networker.swift */,
+			);
+			path = Networker;
+			sourceTree = "<group>";
+		};
+		9806BA7423A3D0E20059A480 /* Errror */ = {
+			isa = PBXGroup;
+			children = (
+				9806BA7523A3D11A0059A480 /* NetworkError.swift */,
+			);
+			path = Errror;
+			sourceTree = "<group>";
+		};
 		982E2B4B23A3BDBF00CD60EC = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				9859143B23A3C7BD00798708 /* DailySearchColor.swift */,
+				9806BA7423A3D0E20059A480 /* Errror */,
+				9806BA6E23A3CFB00059A480 /* SDK */,
 				9859144223A3CADF00798708 /* Extension */,
 				9859143623A3C66500798708 /* Base */,
 			);
@@ -188,6 +223,7 @@
 			children = (
 				9859144323A3CAED00798708 /* ExtensionUIView.swift */,
 				9859144623A3CBD800798708 /* ExtensionNSObject.swift */,
+				9806BA7723A3D1440059A480 /* ExtensionUIAlertController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -348,10 +384,14 @@
 				9859143823A3C66F00798708 /* BaseViewController.swift in Sources */,
 				9859143A23A3C73100798708 /* BaseView.swift in Sources */,
 				982E2B5823A3BDBF00CD60EC /* AppDelegate.swift in Sources */,
+				9806BA7023A3CFC80059A480 /* Networker.swift in Sources */,
+				9806BA7823A3D1440059A480 /* ExtensionUIAlertController.swift in Sources */,
 				9859143E23A3C9A700798708 /* BaseNavigationViewController.swift in Sources */,
 				9859144723A3CBD800798708 /* ExtensionNSObject.swift in Sources */,
 				9859144423A3CAED00798708 /* ExtensionUIView.swift in Sources */,
+				9806BA7623A3D11A0059A480 /* NetworkError.swift in Sources */,
 				982E2B5A23A3BDBF00CD60EC /* SceneDelegate.swift in Sources */,
+				9806BA7323A3D02E0059A480 /* DailySearchService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
