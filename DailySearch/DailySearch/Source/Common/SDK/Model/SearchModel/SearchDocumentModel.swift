@@ -8,9 +8,14 @@
 
 import ObjectMapper
 
-enum SearchType {
-    case blog
-    case cafe
+public enum SearchType: String, CustomStringConvertible {
+    case all = "All"
+    case blog = "Blog"
+    case cafe = "Cafe"
+    
+    public var description: String {
+        return self.rawValue
+    }
 }
 
 final class SearchDocumentModel: BaseModel {

@@ -107,6 +107,37 @@ public extension UIAlertController {
         }))
         return alertController
     }
+    
+    @discardableResult
+    static func genreSheet(handler: ((SearchType) -> Void)? = nil, cancelHandler: (() -> Void)? = nil) -> UIAlertController {
+        let alertController = UIAlertController(title: nil,
+                                                message: nil,
+                                                preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "\(SearchType.all)",
+                                                style: .default,
+                                                handler: { (_) in
+                                                    handler?(.all)
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "\(SearchType.blog)",
+                                                style: .default,
+                                                handler: { (_) in
+                                                    handler?(.blog)
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "\(SearchType.cafe)",
+                                                style: .default,
+                                                handler: { (_) in
+                                                    handler?(.cafe)
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "취소",
+                                                style: .cancel,
+                                                handler: { _ in
+                                                    cancelHandler?()
+        }))
+        return alertController
+    }
 
     @discardableResult
     func show( _ viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) -> UIAlertController {
