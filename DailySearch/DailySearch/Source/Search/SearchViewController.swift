@@ -107,6 +107,12 @@ class SearchViewController: BaseViewController {
                 guard let self = self else { return }
                 self.showGenre()
             }).disposed(by: bag)
+        
+        viewModel.output.listFilterChoiceAlertObservable
+            .subscribe(onNext: { [weak self] (_) in
+                guard let self = self else { return }
+                self.showListFilter()
+            }).disposed(by: bag)
     }
     
     override func viewDidLoad() {
@@ -119,6 +125,19 @@ class SearchViewController: BaseViewController {
             self.viewModel.input.searchTypeChanged.accept(searchType)
         })
         sheet.show(self)
+    }
+    
+    private func showListFilter() {
+        let filterAlertViewController = SearchListFilterAlertViewController.intance()
+        
+        filterAlertViewController.modalPresentationStyle = .overFullScreen
+        
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            guard let self = self else { return }
+            self.present(filterAlertViewController,
+                         animated: false,
+                         completion: nil)
+        })
     }
 }
 

@@ -35,6 +35,7 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
     
     struct Output {
         public let genreFilterChoiceAlertObservable: Observable<Void>
+        public let listFilterChoiceAlertObservable: Observable<Void>
     }
     
     public lazy var input: InputType = Input()
@@ -42,7 +43,11 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
         let genreFilterBtnTapped = input.genreFilterBtnTapped
             .map { _ in return }
         
-        return Output(genreFilterChoiceAlertObservable: genreFilterBtnTapped)
+        let listFilterBtnTapped = input.listFilterBtnTapped
+            .map { _ in return }
+        
+        return Output(genreFilterChoiceAlertObservable: genreFilterBtnTapped,
+                      listFilterChoiceAlertObservable: listFilterBtnTapped)
     }()
     
     public private(set) var searchgenreType: SearchType = .all
