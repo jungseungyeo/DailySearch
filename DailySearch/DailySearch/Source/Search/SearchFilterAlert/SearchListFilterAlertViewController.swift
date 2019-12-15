@@ -77,6 +77,7 @@ class SearchListFilterAlertViewController: BaseViewController {
         cancelBtn.rx.tap
             .subscribe(onNext: { [weak self] (_) in
                 guard let self = self else { return }
+                self.delegate?.cancel()
                 self.dimissAnimation()
             }).disposed(by: bag)
         
