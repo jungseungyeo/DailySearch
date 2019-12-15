@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="IXG-5B-gUW" customClass="SearchFilterHeaderView" customModule="DailySearch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfC-sY-4M7">
+                    <rect key="frame" x="245" y="0.0" width="75" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="75" id="CTq-YL-1Co"/>
+                    </constraints>
+                    <state key="normal" title="Datetime"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cgb-np-cB6">
+                    <rect key="frame" x="243" y="0.0" width="2" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="2" id="rBb-sd-1FH"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5k-jQ-mUd">
+                    <rect key="frame" x="0.0" y="0.0" width="243" height="50"/>
+                    <state key="normal" title="All"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="sfC-sY-4M7" firstAttribute="top" secondItem="fBB-Lf-jUq" secondAttribute="top" id="6Jk-b6-ZhU"/>
+                <constraint firstItem="a5k-jQ-mUd" firstAttribute="leading" secondItem="fBB-Lf-jUq" secondAttribute="leading" id="Bgu-ms-8Ud"/>
+                <constraint firstItem="Cgb-np-cB6" firstAttribute="leading" secondItem="a5k-jQ-mUd" secondAttribute="trailing" id="Dk1-HE-qa2"/>
+                <constraint firstItem="sfC-sY-4M7" firstAttribute="bottom" secondItem="fBB-Lf-jUq" secondAttribute="bottom" id="Npd-p5-s5b"/>
+                <constraint firstItem="fBB-Lf-jUq" firstAttribute="bottom" secondItem="Cgb-np-cB6" secondAttribute="bottom" id="Pne-3L-fqH"/>
+                <constraint firstItem="sfC-sY-4M7" firstAttribute="leading" secondItem="Cgb-np-cB6" secondAttribute="trailing" id="QsF-uu-mki"/>
+                <constraint firstItem="a5k-jQ-mUd" firstAttribute="top" secondItem="fBB-Lf-jUq" secondAttribute="top" id="Rds-3K-G5S"/>
+                <constraint firstItem="fBB-Lf-jUq" firstAttribute="trailing" secondItem="sfC-sY-4M7" secondAttribute="trailing" id="i9w-iE-emc"/>
+                <constraint firstItem="Cgb-np-cB6" firstAttribute="top" secondItem="fBB-Lf-jUq" secondAttribute="top" id="qkA-KC-2AZ"/>
+                <constraint firstItem="fBB-Lf-jUq" firstAttribute="bottom" secondItem="a5k-jQ-mUd" secondAttribute="bottom" id="rs0-5R-Pqc"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fBB-Lf-jUq"/>
+            <connections>
+                <outlet property="divisionLineView" destination="Cgb-np-cB6" id="iEJ-k8-gPR"/>
+                <outlet property="genreFilterBtn" destination="a5k-jQ-mUd" id="D2b-Uy-Zsf"/>
+                <outlet property="listFilterBtn" destination="sfC-sY-4M7" id="Nky-7h-g8F"/>
+            </connections>
+            <point key="canvasLocation" x="-104" y="67.466266866566727"/>
+        </view>
+    </objects>
+</document>

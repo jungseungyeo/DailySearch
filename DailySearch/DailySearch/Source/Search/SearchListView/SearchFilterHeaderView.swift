@@ -1,8 +1,8 @@
 //
-//  SearchFilterReusableView.swift
+//  SearchHeaderView.swift
 //  DailySearch
 //
-//  Created by saenglin on 2019/12/14.
+//  Created by saenglin on 2019/12/15.
 //  Copyright © 2019 linsaeng. All rights reserved.
 //
 
@@ -11,7 +11,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-extension Reactive where Base: SearchFilterReusableView {
+extension Reactive where Base: SearchFilterHeaderView {
     var genreFilterBtnTapped: Observable<Void> {
         return base.genreFilterBtn.rx.tap.asObservable()
     }
@@ -21,26 +21,21 @@ extension Reactive where Base: SearchFilterReusableView {
     }
 }
 
-class SearchFilterReusableView: BaseCollectionReusableView {
+class SearchFilterHeaderView: BaseView {
     
     @IBOutlet weak var genreFilterBtn: UIButton!
     @IBOutlet weak var listFilterBtn: UIButton!
     
-    static let registerID = "\(SearchFilterReusableView.self)"
+    @IBOutlet weak var divisionLineView: UIView!
     
     public var bag = DisposeBag()
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        genreFilterBtn.setTitleColor(DailySearchColor.Style.label,
-                                     for: .normal)
-        listFilterBtn.setTitleColor(DailySearchColor.Style.label,
-                                    for: .normal)
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        bag = DisposeBag()
+        
+        divisionLineView.backgroundColor = DailySearchColor.Style.label
+        genreFilterBtn.setTitleColor(DailySearchColor.Style.label, for: .normal)
+        listFilterBtn.setTitleColor(DailySearchColor.Style.label, for: .normal)
     }
     
     public func bind(type: SearchType, filterType: SearchListFilter) {

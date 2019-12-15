@@ -13,7 +13,7 @@ import RxSwift
 
 class SearchViewController: BaseViewController {
     
-    @IBOutlet weak var searchListCollectionView: UICollectionView!
+    @IBOutlet weak var searchListTableView: UITableView!
     
     private let viewModel = SearchViewModel()
     private let bag = DisposeBag()
@@ -43,9 +43,8 @@ class SearchViewController: BaseViewController {
         let searchbarPlaceHolder: String = "검색어를 입력해주세요"
         let searchTitle: String = "검색"
         
-        let searchFilterHeaderSize: CGSize = .init(width: UIScreen.main.bounds.width, height: 50)
-        let searchListCellSize: CGSize = .init(width: UIScreen.main.bounds.width, height: 100)
-        let recentSearchCellHeight: CGFloat = 50
+        let searchFilterHeaderHeight: CGFloat = 50
+        let saerchListHeight: CGFloat = 100
     }
     
     private let const = Const()
@@ -54,7 +53,7 @@ class SearchViewController: BaseViewController {
         super.setup()
         setupKeyboard()
         setupNavigation()
-        setupSearchListCollectionView()
+        setupSearchListTableView()
     }
     
     private func setupKeyboard() {
@@ -78,16 +77,12 @@ class SearchViewController: BaseViewController {
         navigationItem.rightBarButtonItem = searchButton
     }
     
-    private func setupSearchListCollectionView() {
-        searchListCollectionView.addSubviews(refreshControl)
-        searchListCollectionView.register(UINib(nibName: "SearchFilterReusableView",
-                                                bundle: nil),
-                                          forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                          withReuseIdentifier: SearchFilterReusableView.registerID)
-        
-        searchListCollectionView.register(UINib(nibName: "SearchlistCollectionViewCell",
-                                                bundle: nil),
-                                          forCellWithReuseIdentifier: SearchlistCollectionViewCell.registerID)
+    private func setupSearchListTableView() {
+        searchListTableView.addSubview(refreshControl)
+        searchListTableView.separatorStyle = .none
+        searchListTableView.tableFooterView = UIView()
+        searchListTableView.register(UINib(nibName: "SearchListTableViewCell", bundle: nil),
+                                     forCellReuseIdentifier: SearchListTableViewCell.registerID)
     }
     
     override func bind() {
@@ -141,60 +136,58 @@ class SearchViewController: BaseViewController {
     }
 }
 
-extension SearchViewController: UISearchBarDelegate {
+extension SearchViewController: UITableViewDelegate {
     
 }
 
-extension SearchViewController: UICollectionViewDelegateFlowLayout {
+extension SearchViewController: UITableViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return const.searchFilterHeaderSize
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return const.searchListCellSize
-    }
-    
-}
-
-extension SearchViewController: UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 500
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                           withReuseIdentifier: SearchFilterReusableView.registerID,
-                                                                           for: indexPath) as? SearchFilterReusableView else {
-                                                                            return UICollectionReusableView()
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return const.searchFilterHeaderHeight
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return const.saerchListHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerFilterView = SearchFilterHeaderView.loadFromNib() else {
+            return nil
         }
         
-        header.bind(type: viewModel.searchgenreType,
-                    filterType: viewModel.searchListFilterType)
+        headerFilterView.bind(type: viewModel.searchgenreType,
+                              filterType: viewModel.searchListFilterType)
         
-        header.rx.genreFilterBtnTapped
+        headerFilterView.rx.genreFilterBtnTapped
             .map { _ in return }
             .bind(to: viewModel.input.genreFilterBtnTapped)
-            .disposed(by: header.bag)
+            .disposed(by: headerFilterView.bag)
         
-        header.rx.listFileterBtnTapped
+        headerFilterView.rx.listFileterBtnTapped
             .map { _ in return }
             .bind(to: viewModel.input.listFilterBtnTapped)
-            .disposed(by: header.bag)
+            .disposed(by: headerFilterView.bag)
         
-        return header
+        return headerFilterView
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchlistCollectionViewCell.registerID, for: indexPath) as? SearchlistCollectionViewCell else {
-            return UICollectionViewCell()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchListTableViewCell.registerID, for: indexPath) as? SearchListTableViewCell else {
+            return UITableViewCell()
         }
         
         return cell
     }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    
 }
