@@ -104,9 +104,9 @@ class SearchViewController: BaseViewController {
             }).disposed(by: bag)
         
         viewModel.output.listFilterChoiceAlertObservable
-            .subscribe(onNext: { [weak self] (_) in
+            .subscribe(onNext: { [weak self] (searchFilterViewController) in
                 guard let self = self else { return }
-                self.showListFilter()
+                self.showListFilter(to: searchFilterViewController)
             }).disposed(by: bag)
     }
     
@@ -122,10 +122,11 @@ class SearchViewController: BaseViewController {
         sheet.show(self)
     }
     
-    private func showListFilter() {
-        let filterAlertViewController = SearchListFilterAlertViewController.intance()
+    private func showListFilter(to searchListFilterAlertViewController: SearchListFilterAlertViewController) {
+        let filterAlertViewController = searchListFilterAlertViewController
         
         filterAlertViewController.modalPresentationStyle = .overFullScreen
+        filterAlertViewController.delegate = self
         
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
             guard let self = self else { return }
@@ -190,4 +191,14 @@ extension SearchViewController: UITableViewDataSource {
 
 extension SearchViewController: UISearchBarDelegate {
     
+}
+
+extension SearchViewController: SearchListFilterDelegate {
+    func confirm(type: SearchListFilter) {
+        
+    }
+    
+    func cancel() {
+        
+    }
 }

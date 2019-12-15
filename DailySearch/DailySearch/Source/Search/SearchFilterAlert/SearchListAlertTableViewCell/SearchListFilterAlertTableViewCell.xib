@@ -39,6 +39,10 @@
                     <constraint firstAttribute="trailing" secondItem="n9I-Df-MVX" secondAttribute="trailing" id="e8x-4h-uud"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="choiceBoxView" destination="Lcl-oD-PYj" id="hfv-VS-tFJ"/>
+                <outlet property="filterTitle" destination="n9I-Df-MVX" id="TlR-IO-U3c"/>
+            </connections>
             <point key="canvasLocation" x="-7.9710144927536239" y="104.12946428571428"/>
         </tableViewCell>
     </objects>

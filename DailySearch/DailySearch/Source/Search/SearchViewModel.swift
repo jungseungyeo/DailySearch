@@ -9,12 +9,18 @@
 import RxCocoa
 import RxSwift
 
-enum SearchListFilter: String, CustomStringConvertible {
-    case title = "Title"
-    case date = "Datetime"
+enum SearchListFilter: Int, CustomStringConvertible, CaseIterable {
+    
+    case title = 0
+    case date
     
     var description: String {
-        return self.rawValue
+        switch self {
+        case .title:
+            return "Title"
+        case .date:
+            return "Datetime"
+        }
     }
 }
 
@@ -35,7 +41,7 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
     
     struct Output {
         public let genreFilterChoiceAlertObservable: Observable<Void>
-        public let listFilterChoiceAlertObservable: Observable<Void>
+        public let listFilterChoiceAlertObservable: Observable<SearchListFilterAlertViewController>
     }
     
     public lazy var input: InputType = Input()
@@ -44,14 +50,17 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
             .map { _ in return }
         
         let listFilterBtnTapped = input.listFilterBtnTapped
-            .map { _ in return }
+            .map { _ -> SearchListFilterAlertViewController in
+                let searchListFilterAlertViewController = SearchListFilterAlertViewController.intance(viewModel: SearchListAlertViewModel(filterType: self.searchListFilterType))
+                return searchListFilterAlertViewController
+        }
         
         return Output(genreFilterChoiceAlertObservable: genreFilterBtnTapped,
                       listFilterChoiceAlertObservable: listFilterBtnTapped)
     }()
     
-    public private(set) var searchgenreType: SearchType = .all
-    public private(set) var searchListFilterType: SearchListFilter = .title
+    public private(set) lazy var searchgenreType: SearchType = .all
+    public private(set) lazy var searchListFilterType: SearchListFilter = .title
     
     private let bag = DisposeBag()
     
