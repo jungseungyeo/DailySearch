@@ -41,7 +41,7 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
     
     struct Output {
         public let genreFilterChoiceAlertObservable: Observable<Void>
-        public let listFilterChoiceAlertObservable: Observable<SearchListFilterAlertViewController>
+        public let listFilterChoiceAlert = PublishRelay<SearchListFilterAlertViewController>()
     }
     
     public lazy var input: InputType = Input()
@@ -49,14 +49,7 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
         let genreFilterBtnTapped = input.genreFilterBtnTapped
             .map { _ in return }
         
-        let listFilterBtnTapped = input.listFilterBtnTapped
-            .map { _ -> SearchListFilterAlertViewController in
-                let searchListFilterAlertViewController = SearchListFilterAlertViewController.intance(viewModel: SearchListAlertViewModel(filterType: self.searchListFilterType))
-                return searchListFilterAlertViewController
-        }
-        
-        return Output(genreFilterChoiceAlertObservable: genreFilterBtnTapped,
-                      listFilterChoiceAlertObservable: listFilterBtnTapped)
+        return Output(genreFilterChoiceAlertObservable: genreFilterBtnTapped)
     }()
     
     public private(set) lazy var searchgenreType: SearchType = .all
@@ -71,6 +64,12 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
     }
     
     private func rxBind() {
-
+        
+        input.listFilterBtnTapped
+            .subscribe(onNext: { [weak self] (_) in
+                guard let self = self else { return }
+                let searchListFilterAlertViewController = SearchListFilterAlertViewController.intance(viewModel: SearchListAlertViewModel(filterType: self.searchListFilterType))
+                self.output.listFilterChoiceAlert.accept(searchListFilterAlertViewController)
+            }).disposed(by: bag)
     }
 }

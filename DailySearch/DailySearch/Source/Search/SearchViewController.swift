@@ -103,7 +103,8 @@ class SearchViewController: BaseViewController {
                 self.showGenre()
             }).disposed(by: bag)
         
-        viewModel.output.listFilterChoiceAlertObservable
+        viewModel.output.listFilterChoiceAlert
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] (searchFilterViewController) in
                 guard let self = self else { return }
                 self.showListFilter(to: searchFilterViewController)
