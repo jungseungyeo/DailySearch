@@ -70,6 +70,16 @@ class IntroViewController: BaseViewController {
 
 private extension IntroViewController {
     func moveSearchPage() {
+        guard let window = UIApplication.shared.windows.first else { return }
+        guard let searchNavigationController = SearchNavigationController.instance() else {
+            return
+        }
+        searchNavigationController.view.alpha = 0.0
+        UIApplication.shared.windows.first?.rootViewController = searchNavigationController
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
         
+        UIView.transition(with: window, duration: 0.3, options: [.transitionCrossDissolve], animations: {
+            searchNavigationController.view.alpha = 1.0
+        }, completion: nil)
     }
 }

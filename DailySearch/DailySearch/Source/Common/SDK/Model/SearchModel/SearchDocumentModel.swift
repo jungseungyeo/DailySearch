@@ -8,14 +8,17 @@
 
 import ObjectMapper
 
-enum SearchType {
-    case blog
-    case cafe
+public enum SearchType: String, CustomStringConvertible {
+    case all = "All"
+    case blog = "Blog"
+    case cafe = "Cafe"
+    
+    public var description: String {
+        return self.rawValue
+    }
 }
 
 final class SearchDocumentModel: BaseModel {
-
-    public private(set) var searchType: SearchType?
     
     /// Cafe or Blog name
     public private(set) var typeName: String?
@@ -37,12 +40,8 @@ final class SearchDocumentModel: BaseModel {
         
         typeName <- map["cafename"]
         
-        if typeName != nil {
-            // cafe
-            searchType = .cafe
-        } else {
-            // blog
-            searchType = .blog
+        if typeName == nil {
+            //blog
             typeName <- map["blogname"]
         }
     }

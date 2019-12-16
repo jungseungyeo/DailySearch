@@ -12,4 +12,12 @@ extension NSObject {
     static var classNameToString: String {
         return NSStringFromClass(self).components(separatedBy: ".").last ?? ""
     }
+    
+    enum StoryBoard: String, CustomStringConvertible {
+        case search = "Search"
+        
+        var description: String {
+            return self.rawValue
+        }
+    }
 }
