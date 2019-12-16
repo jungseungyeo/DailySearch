@@ -19,12 +19,6 @@ protocol BaseViewControllerable {
 
 class BaseViewController: UIViewController, BaseViewControllerable {
     
-    lazy var refreshControl: UIRefreshControl = {
-        var control = UIRefreshControl()
-        control.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
-        return control
-    }()
-    
     lazy var indicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: indicatorStyle)
         indicator.hidesWhenStopped = true
@@ -57,9 +51,6 @@ class BaseViewController: UIViewController, BaseViewControllerable {
     }
     
     public func handleError(error: Error?) { }
-    
-    @objc
-    public func handleRefresh(_ sender: UIRefreshControl) { }
     
     public func setUp(title: String?) {
         guard let title = title else { return }

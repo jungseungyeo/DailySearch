@@ -19,8 +19,6 @@ public enum SearchType: String, CustomStringConvertible {
 }
 
 final class SearchDocumentModel: BaseModel {
-
-    public private(set) var searchType: SearchType?
     
     /// Cafe or Blog name
     public private(set) var typeName: String?
@@ -42,12 +40,8 @@ final class SearchDocumentModel: BaseModel {
         
         typeName <- map["cafename"]
         
-        if typeName != nil {
-            // cafe
-            searchType = .cafe
-        } else {
-            // blog
-            searchType = .blog
+        if typeName == nil {
+            //blog
             typeName <- map["blogname"]
         }
     }

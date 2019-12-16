@@ -32,6 +32,7 @@
 		9859144023A3CA7300798708 /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9859143F23A3CA7300798708 /* IntroViewController.xib */; };
 		9859144423A3CAED00798708 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9859144323A3CAED00798708 /* ExtensionUIView.swift */; };
 		9859144723A3CBD800798708 /* ExtensionNSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9859144623A3CBD800798708 /* ExtensionNSObject.swift */; };
+		986BE20623A605F7003A3002 /* ExtensionReactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986BE20523A605F7003A3002 /* ExtensionReactive.swift */; };
 		987AD2A023A481F000C186FD /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987AD29F23A481F000C186FD /* TestUtil.swift */; };
 		987AD2AA23A4838E00C186FD /* BlogNetworkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987AD2A923A4838E00C186FD /* BlogNetworkerTest.swift */; };
 		98972D2623A47216001BB4E9 /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98972D2523A47216001BB4E9 /* SearchAPI.swift */; };
@@ -100,6 +101,7 @@
 		9859143F23A3CA7300798708 /* IntroViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
 		9859144323A3CAED00798708 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 		9859144623A3CBD800798708 /* ExtensionNSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNSObject.swift; sourceTree = "<group>"; };
+		986BE20523A605F7003A3002 /* ExtensionReactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionReactive.swift; sourceTree = "<group>"; };
 		987AD29F23A481F000C186FD /* TestUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
 		987AD2A923A4838E00C186FD /* BlogNetworkerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogNetworkerTest.swift; sourceTree = "<group>"; };
 		98972D2523A47216001BB4E9 /* SearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPI.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				9859144623A3CBD800798708 /* ExtensionNSObject.swift */,
 				9806BA7723A3D1440059A480 /* ExtensionUIAlertController.swift */,
 				989FDB7423A50733004B2A0E /* ExtensionString.swift */,
+				986BE20523A605F7003A3002 /* ExtensionReactive.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				9859143823A3C66F00798708 /* BaseViewController.swift in Sources */,
 				98972D2823A47230001BB4E9 /* SearchNetworker.swift in Sources */,
 				98972D3023A47613001BB4E9 /* SearchMetaModel.swift in Sources */,
+				986BE20623A605F7003A3002 /* ExtensionReactive.swift in Sources */,
 				982979CE23A53E4A001A3AF6 /* SearchListFilterAlertTableViewCell.swift in Sources */,
 				9859143A23A3C73100798708 /* BaseView.swift in Sources */,
 				982E2B5823A3BDBF00CD60EC /* AppDelegate.swift in Sources */,

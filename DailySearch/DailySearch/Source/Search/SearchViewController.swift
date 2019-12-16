@@ -44,7 +44,7 @@ class SearchViewController: BaseViewController {
         let searchTitle: String = "검색"
         
         let searchFilterHeaderHeight: CGFloat = 50
-        let saerchListHeight: CGFloat = 100
+        let saerchListHeight: CGFloat = 143
     }
     
     private let const = Const()
@@ -78,8 +78,7 @@ class SearchViewController: BaseViewController {
     }
     
     private func setupSearchListTableView() {
-        searchListTableView.addSubview(refreshControl)
-        searchListTableView.separatorStyle = .none
+        searchListTableView.separatorStyle = .singleLine
         searchListTableView.tableFooterView = UIView()
         searchListTableView.register(UINib(nibName: "SearchListTableViewCell", bundle: nil),
                                      forCellReuseIdentifier: SearchListTableViewCell.registerID)
@@ -96,7 +95,6 @@ class SearchViewController: BaseViewController {
             .bind(to: viewModel.input.searchText)
             .disposed(by: bag)
         
-        
         viewModel.output.genreFilterChoiceAlertObservable
             .subscribe(onNext: { [weak self] (_) in
                 guard let self = self else { return }
@@ -108,6 +106,22 @@ class SearchViewController: BaseViewController {
             .subscribe(onNext: { [weak self] (searchFilterViewController) in
                 guard let self = self else { return }
                 self.showListFilter(to: searchFilterViewController)
+            }).disposed(by: bag)
+        
+        viewModel.output.state
+            .subscribe(onNext: { [weak self] (state) in
+                guard let self = self else { return }
+                switch state {
+                case .requesting:
+                    self.indicator.startAnimating()
+                case .complete:
+                    self.indicator.stopAnimating()
+                    self.searchListTableView.reloadData()
+                case .error(let error):
+                    self.indicator.stopAnimating()
+                    self.handleError(error: error)
+                }
+                
             }).disposed(by: bag)
     }
     
@@ -136,6 +150,10 @@ class SearchViewController: BaseViewController {
                          completion: nil)
         })
     }
+    
+    override func handleError(error: Error?) {
+        super.handleError(error: error)
+    }
 }
 
 extension SearchViewController: UITableViewDelegate {
@@ -149,7 +167,7 @@ extension SearchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return viewModel.searchListPresentModels.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -186,7 +204,17 @@ extension SearchViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
+        cell.bind(isSelected: false,
+                  presentModel: viewModel.searchListPresentModels[indexPath.row])
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if viewModel.searchListPresentModels.count - 3 == indexPath.row {
+            viewModel.input.pagingRequet.accept(())
+        }
     }
 }
 
@@ -196,10 +224,8 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: SearchListFilterDelegate {
     func confirm(type: SearchListFilter) {
-        
+        viewModel.input.searchListTypeChanged.accept(type)
     }
     
-    func cancel() {
-        
-    }
+    func cancel() { }
 }
