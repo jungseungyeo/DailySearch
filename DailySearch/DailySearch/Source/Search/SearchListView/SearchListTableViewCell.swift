@@ -57,7 +57,7 @@ class SearchListTableViewCell: BaseTableViewCell {
     public func bind(isSelected: Bool, presentModel: SearchListPresentModel) {
         dimView.isHidden = !isSelected
         searchType.text = "\(presentModel.type)"
-        typeName.attributedText = presentModel.title
+        typeName.text = presentModel.name
         title.attributedText = presentModel.content
         typeDate.text = presentModel.dateTime
         

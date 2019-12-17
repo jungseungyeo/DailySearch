@@ -111,9 +111,9 @@ class SearchDetailViewController: BaseViewController {
         
         viewModel.output.moveWebPage
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] (url) in
+            .subscribe(onNext: { [weak self] (vc) in
                 guard let self = self else { return }
-                self.navigationController?.pushViewController(SearchWebPageViewController.instance(url: url), animated: true)
+                self.navigationController?.pushViewController(vc, animated: true)
             }).disposed(by: bag)
     }
     

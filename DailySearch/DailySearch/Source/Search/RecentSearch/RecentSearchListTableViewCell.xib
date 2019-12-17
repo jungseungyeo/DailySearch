@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="tJw-Rb-YUg" customClass="RecentSearchListTableViewCell" customModule="DailySearch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="425" height="45"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tJw-Rb-YUg" id="0sT-oF-KUL">
+                <rect key="frame" x="0.0" y="0.0" width="425" height="45"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fx6-VC-xHp">
+                        <rect key="frame" x="10" y="10" width="405" height="25"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIY-xg-v01">
+                        <rect key="frame" x="0.0" y="0.0" width="425" height="45"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="lIY-xg-v01" secondAttribute="bottom" id="IIV-7V-8j1"/>
+                    <constraint firstAttribute="bottom" secondItem="fx6-VC-xHp" secondAttribute="bottom" constant="10" id="S01-lQ-LsK"/>
+                    <constraint firstAttribute="trailing" secondItem="fx6-VC-xHp" secondAttribute="trailing" constant="10" id="XoO-JM-MJx"/>
+                    <constraint firstItem="fx6-VC-xHp" firstAttribute="top" secondItem="0sT-oF-KUL" secondAttribute="top" constant="10" id="gtS-Si-mZ1"/>
+                    <constraint firstItem="fx6-VC-xHp" firstAttribute="leading" secondItem="0sT-oF-KUL" secondAttribute="leading" constant="10" id="kbT-DD-k7p"/>
+                    <constraint firstItem="lIY-xg-v01" firstAttribute="top" secondItem="0sT-oF-KUL" secondAttribute="top" id="sBt-9W-Ahg"/>
+                    <constraint firstItem="lIY-xg-v01" firstAttribute="leading" secondItem="0sT-oF-KUL" secondAttribute="leading" id="v7J-PS-yHl"/>
+                    <constraint firstAttribute="trailing" secondItem="lIY-xg-v01" secondAttribute="trailing" id="yrs-sB-f2e"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cellTapped" destination="lIY-xg-v01" id="gcG-Tb-6Yg"/>
+                <outlet property="recentTitle" destination="fx6-VC-xHp" id="GFW-qP-FET"/>
+            </connections>
+            <point key="canvasLocation" x="-325.36231884057975" y="71.651785714285708"/>
+        </tableViewCell>
+    </objects>
+</document>

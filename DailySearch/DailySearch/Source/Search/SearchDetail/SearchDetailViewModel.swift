@@ -18,7 +18,7 @@ class SearchDetailViewModel: ReactiveViewModelable {
     }
     
     struct Output {
-        public let moveWebPage = PublishRelay<URL>()
+        public let moveWebPage = PublishRelay<SearchWebPageViewController>()
     }
     
     public lazy var input: InputType = Input()
@@ -43,7 +43,9 @@ class SearchDetailViewModel: ReactiveViewModelable {
             guard let self = self else { return }
             guard let url = URL(string: self.searchListPresentModel.urlString) else { return }
             self.saveURL(urlString: url.absoluteString)
-            self.output.moveWebPage.accept((url))
+            let viewModel = SearchWebPageViewModel(url: url, title: self.searchListPresentModel.title?.string ?? "")
+            let vc = SearchWebPageViewController.instance(viewModel: viewModel)
+            self.output.moveWebPage.accept(vc)
             }).disposed(by: bag)
         
     }

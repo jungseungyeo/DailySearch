@@ -13,26 +13,24 @@ class SearchWebPageViewController: BaseViewController {
     
     @IBOutlet weak var webView: UIWebView!
     
-    private var requestURL: URL?
+    private var viewModel: SearchWebPageViewModel!
     
-    static func instance(url: URL) -> SearchWebPageViewController {
+    static func instance(viewModel: SearchWebPageViewModel) -> SearchWebPageViewController {
         let viewController = SearchWebPageViewController(nibName: classNameToString, bundle: nil)
-        viewController.requestURL = url
+        viewController.viewModel = viewModel
         return viewController
     }
     
     override func setup() {
         super.setup()
-        
+        title = viewModel.titleString
         webView.delegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let requestURL = requestURL {
-            webView.loadRequest(URLRequest(url: requestURL))
-        }
+        webView.loadRequest(URLRequest(url: viewModel.requestURL))
     }
     
 }
