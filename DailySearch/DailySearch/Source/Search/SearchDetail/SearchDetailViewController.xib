@@ -13,8 +13,8 @@
                 <outlet property="createDate" destination="Ggf-Br-RVt" id="LPG-lk-cIy"/>
                 <outlet property="linkClickBtn" destination="OBU-fY-CMg" id="w5N-O6-Lku"/>
                 <outlet property="searchContents" destination="d4t-1U-sUN" id="dpl-eh-8Td"/>
+                <outlet property="searchName" destination="tNC-M0-PDB" id="PlQ-gt-WLS"/>
                 <outlet property="searchTitle" destination="Oqj-8H-O2I" id="2gL-Lm-Dkf"/>
-                <outlet property="searchTyp" destination="tNC-M0-PDB" id="qsd-ob-cCL"/>
                 <outlet property="thumbnailImage" destination="6BM-Rc-J4v" id="ie5-zW-vo1"/>
                 <outlet property="urlLink" destination="t8B-WI-uDm" id="zkx-eJ-tQC"/>
                 <outlet property="view" destination="iN0-l3-epB" id="lsd-0b-nx3"/>
@@ -32,14 +32,14 @@
                         <constraint firstAttribute="height" constant="100" id="Rzu-Zn-K6w"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cafe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNC-M0-PDB">
-                    <rect key="frame" x="143.5" y="200" width="33" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cafe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNC-M0-PDB">
+                    <rect key="frame" x="10" y="200" width="300" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- 리니지를 사랑하는 -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqj-8H-O2I">
-                    <rect key="frame" x="86.5" y="251" width="147" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- 리니지를 사랑하는 -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqj-8H-O2I">
+                    <rect key="frame" x="10" y="251" width="300" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -89,20 +89,24 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="OBU-fY-CMg" secondAttribute="trailing" constant="15" id="Cew-IN-zFm"/>
                 <constraint firstItem="tNC-M0-PDB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="DTx-k5-Ki0"/>
                 <constraint firstItem="6BM-Rc-J4v" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="70" id="Flo-Fe-wBi"/>
+                <constraint firstItem="tNC-M0-PDB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="JaB-ed-I09"/>
                 <constraint firstItem="t8B-WI-uDm" firstAttribute="top" secondItem="Ggf-Br-RVt" secondAttribute="bottom" constant="60" id="KTt-s4-l51"/>
                 <constraint firstItem="d4t-1U-sUN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Kjv-Zp-46L"/>
                 <constraint firstAttribute="trailing" secondItem="d4t-1U-sUN" secondAttribute="trailing" constant="10" id="LGP-HW-K84"/>
                 <constraint firstItem="Ggf-Br-RVt" firstAttribute="top" secondItem="d4t-1U-sUN" secondAttribute="bottom" constant="30" id="LVs-1i-2VH"/>
                 <constraint firstItem="6BM-Rc-J4v" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Mlz-WS-yov"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tNC-M0-PDB" secondAttribute="trailing" constant="10" id="PHN-9t-Afq"/>
                 <constraint firstItem="OBU-fY-CMg" firstAttribute="leading" secondItem="t8B-WI-uDm" secondAttribute="trailing" constant="15" id="Pmj-9y-LFJ"/>
                 <constraint firstItem="t8B-WI-uDm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="RLO-sS-wxw"/>
                 <constraint firstItem="Oqj-8H-O2I" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="StK-Sz-qg1"/>
                 <constraint firstItem="tNC-M0-PDB" firstAttribute="top" secondItem="6BM-Rc-J4v" secondAttribute="bottom" constant="30" id="TKy-Cw-Bv5"/>
                 <constraint firstItem="Oqj-8H-O2I" firstAttribute="top" secondItem="tNC-M0-PDB" secondAttribute="bottom" constant="30" id="Ydk-pc-qBm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Oqj-8H-O2I" secondAttribute="trailing" constant="10" id="ZIl-kD-XbC"/>
                 <constraint firstItem="Ggf-Br-RVt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="hKv-w6-nZJ"/>
                 <constraint firstItem="d4t-1U-sUN" firstAttribute="top" secondItem="Oqj-8H-O2I" secondAttribute="bottom" constant="30" id="hYZ-Lu-K3J"/>
                 <constraint firstItem="OBU-fY-CMg" firstAttribute="centerY" secondItem="t8B-WI-uDm" secondAttribute="centerY" id="hiW-0d-PAu"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ggf-Br-RVt" secondAttribute="trailing" constant="10" id="jiH-Wa-fbt"/>
+                <constraint firstItem="Oqj-8H-O2I" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="nYS-wp-l9U"/>
                 <constraint firstItem="tNC-M0-PDB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="uh2-HI-rcs"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

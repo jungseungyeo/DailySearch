@@ -14,7 +14,7 @@ import RxSwift
 class SearchDetailViewController: BaseViewController {
     
     @IBOutlet weak var thumbnailImage: UIImageView!
-    @IBOutlet weak var searchTyp: UILabel!
+    @IBOutlet weak var searchName: UILabel!
     @IBOutlet weak var searchTitle: UILabel!
     @IBOutlet weak var searchContents: UILabel!
     @IBOutlet weak var createDate: UILabel!
@@ -25,7 +25,7 @@ class SearchDetailViewController: BaseViewController {
     private let bag = DisposeBag()
     
     static func instance(searchViewModel: SearchDetailViewModel) -> SearchDetailViewController {
-        let searchDetailViewController = SearchDetailViewController(nibName: "SearchDetailViewController", bundle: nil)
+        let searchDetailViewController = SearchDetailViewController(nibName: classNameToString, bundle: nil)
         searchDetailViewController.viewModel = searchViewModel
         return searchDetailViewController
     }
@@ -39,9 +39,10 @@ class SearchDetailViewController: BaseViewController {
     
     override func setup() {
         super.setup()
-        
+        title = "\(viewModel.searchListPresentModel.type)"
+        view.backgroundColor = DailySearchColor.Style.background
         setupThumbnailImage()
-        setupSearchType()
+        setupSearchName()
         setupSearchContens()
         setupCreateDate()
         setupURL()
@@ -67,10 +68,10 @@ class SearchDetailViewController: BaseViewController {
         }
     }
     
-    private func setupSearchType() {
-        searchTyp.numberOfLines = 1
-        searchTyp.textColor = DailySearchColor.Style.label
-        searchTyp.text = "\(viewModel.searchListPresentModel.type)"
+    private func setupSearchName() {
+        searchName.numberOfLines = 1
+        searchName.textColor = DailySearchColor.Style.label
+        searchName.text = "\(viewModel.searchListPresentModel.name)"
     }
     
     private func setupSearchTitle() {
@@ -107,6 +108,13 @@ class SearchDetailViewController: BaseViewController {
     
     override func bind() {
         super.bind()
+        
+        viewModel.output.moveWebPage
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (url) in
+                guard let self = self else { return }
+                self.navigationController?.pushViewController(SearchWebPageViewController.instance(url: url), animated: true)
+            }).disposed(by: bag)
     }
     
 }

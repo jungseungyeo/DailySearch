@@ -40,6 +40,7 @@ enum SearchViewState {
 
 struct SearchListPresentModel {
     let type: SearchType
+    let name: String
     let title: NSMutableAttributedString?
     let content: NSMutableAttributedString?
     let dateTime: String
@@ -254,6 +255,7 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
                 
                 let presentModels = searchModel.documents?.compactMap({ (document) -> SearchListPresentModel in
                     return SearchListPresentModel(type: searchType,
+                                                  name: document.typeName ?? "",
                                                   title: self.htmlParsing(document.title ?? ""),
                                                   content: self.htmlParsing(document.contents ?? ""),
                                                   dateTime: self.dateParsing(dateString: document.dateTime ?? ""),
@@ -275,6 +277,12 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
             self.output.state.accept(.error(error))
             }).disposed(by: bag)
         
+    }
+    
+    func isDimCell(_ index: Int) -> Bool {
+        guard let clickLinks = UserDefaultManager.clicUrls else { return false }
+        let urlString = searchListPresentModels[index].urlString
+        return (clickLinks.filter { $0 == urlString }).count > 0
     }
 }
 

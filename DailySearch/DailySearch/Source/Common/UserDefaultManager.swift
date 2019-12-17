@@ -35,4 +35,9 @@ class UserDefaultManager: NSObject {
         db.removeObject(forKey: "\(key)")
         db.synchronize()
     }
+    
+    static var clicUrls: [String]? {
+        set { self.setValue(.clickUrls, value: newValue) }
+        get { self.getValue(.clickUrls) }
+    }
 }

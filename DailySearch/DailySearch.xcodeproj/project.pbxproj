@@ -15,6 +15,8 @@
 		98188B3123A7ADFB0093194F /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98188B3023A7ADFB0093194F /* SearchDetailViewController.swift */; };
 		98188B3323A7AE1C0093194F /* SearchDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98188B3223A7AE1C0093194F /* SearchDetailViewController.xib */; };
 		98188B3523A7AF1E0093194F /* SearchDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98188B3423A7AF1E0093194F /* SearchDetailViewModel.swift */; };
+		982785A623A8DD7C00580A6C /* SearchWebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982785A523A8DD7C00580A6C /* SearchWebPageViewController.swift */; };
+		982785A823A8DDED00580A6C /* SearchWebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 982785A723A8DDED00580A6C /* SearchWebPageViewController.xib */; };
 		982979C423A51EB6001A3AF6 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982979C323A51EB6001A3AF6 /* BaseCollectionViewCell.swift */; };
 		982979C923A53B00001A3AF6 /* SearchListFilterAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982979C823A53B00001A3AF6 /* SearchListFilterAlertViewController.swift */; };
 		982979CB23A53B21001A3AF6 /* SearchListFilterAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 982979CA23A53B21001A3AF6 /* SearchListFilterAlertViewController.xib */; };
@@ -84,6 +86,8 @@
 		98188B3023A7ADFB0093194F /* SearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
 		98188B3223A7AE1C0093194F /* SearchDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchDetailViewController.xib; sourceTree = "<group>"; };
 		98188B3423A7AF1E0093194F /* SearchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewModel.swift; sourceTree = "<group>"; };
+		982785A523A8DD7C00580A6C /* SearchWebPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWebPageViewController.swift; sourceTree = "<group>"; };
+		982785A723A8DDED00580A6C /* SearchWebPageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchWebPageViewController.xib; sourceTree = "<group>"; };
 		982979C323A51EB6001A3AF6 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		982979C823A53B00001A3AF6 /* SearchListFilterAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListFilterAlertViewController.swift; sourceTree = "<group>"; };
 		982979CA23A53B21001A3AF6 /* SearchListFilterAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchListFilterAlertViewController.xib; sourceTree = "<group>"; };
@@ -214,8 +218,18 @@
 				98188B3023A7ADFB0093194F /* SearchDetailViewController.swift */,
 				98188B3223A7AE1C0093194F /* SearchDetailViewController.xib */,
 				98188B3423A7AF1E0093194F /* SearchDetailViewModel.swift */,
+				982785A423A8DD6600580A6C /* WebPage */,
 			);
 			path = SearchDetail;
+			sourceTree = "<group>";
+		};
+		982785A423A8DD6600580A6C /* WebPage */ = {
+			isa = PBXGroup;
+			children = (
+				982785A523A8DD7C00580A6C /* SearchWebPageViewController.swift */,
+				982785A723A8DDED00580A6C /* SearchWebPageViewController.xib */,
+			);
+			path = WebPage;
 			sourceTree = "<group>";
 		};
 		982979C723A53ADB001A3AF6 /* SearchFilterAlert */ = {
@@ -507,6 +521,7 @@
 				982E2B6423A3BDC000CD60EC /* LaunchScreen.storyboard in Resources */,
 				989F979623A5C54100339146 /* SearchListTableViewCell.xib in Resources */,
 				982979CB23A53B21001A3AF6 /* SearchListFilterAlertViewController.xib in Resources */,
+				982785A823A8DDED00580A6C /* SearchWebPageViewController.xib in Resources */,
 				982E2B6123A3BDC000CD60EC /* Assets.xcassets in Resources */,
 				982E2B7A23A3BE7400CD60EC /* README.md in Resources */,
 				982979D223A53EF0001A3AF6 /* SearchListFilterAlertTableViewCell.xib in Resources */,
@@ -594,6 +609,7 @@
 				98972D2B23A474AE001BB4E9 /* BaseModel.swift in Sources */,
 				989FDB6D23A4FE33004B2A0E /* SearchNavigationController.swift in Sources */,
 				9806BA7023A3CFC80059A480 /* Networker.swift in Sources */,
+				982785A623A8DD7C00580A6C /* SearchWebPageViewController.swift in Sources */,
 				9890B66323A87E2D00AA39B0 /* UserDefaultManager.swift in Sources */,
 				9806BA7823A3D1440059A480 /* ExtensionUIAlertController.swift in Sources */,
 				989FDB7123A4FFBB004B2A0E /* SearchViewController.swift in Sources */,
