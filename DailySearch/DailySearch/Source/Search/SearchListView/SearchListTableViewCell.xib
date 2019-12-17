@@ -57,7 +57,18 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mMy-lq-79p">
                         <rect key="frame" x="0.0" y="0.0" width="425" height="143"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znl-O9-QdM">
+                                <rect key="frame" x="0.0" y="0.0" width="425" height="143"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="znl-O9-QdM" secondAttribute="bottom" id="Pf6-Pu-1xZ"/>
+                            <constraint firstItem="znl-O9-QdM" firstAttribute="top" secondItem="mMy-lq-79p" secondAttribute="top" id="Vv5-ja-LSw"/>
+                            <constraint firstAttribute="trailing" secondItem="znl-O9-QdM" secondAttribute="trailing" id="vDG-HA-6Kb"/>
+                            <constraint firstItem="znl-O9-QdM" firstAttribute="leading" secondItem="mMy-lq-79p" secondAttribute="leading" id="zK6-Xn-M6X"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <constraints>
@@ -83,6 +94,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="didSelectedCell" destination="znl-O9-QdM" id="iOs-UT-l12"/>
                 <outlet property="dimView" destination="mMy-lq-79p" id="UVn-Pf-1nN"/>
                 <outlet property="searchType" destination="PPs-Az-mnb" id="N0w-T0-f9B"/>
                 <outlet property="thumbnailImg" destination="dj2-u7-yjm" id="RGl-ap-U8n"/>
