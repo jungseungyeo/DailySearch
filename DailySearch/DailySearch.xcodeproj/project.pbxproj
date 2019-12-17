@@ -12,6 +12,9 @@
 		9806BA7323A3D02E0059A480 /* DailySearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806BA7223A3D02E0059A480 /* DailySearchService.swift */; };
 		9806BA7623A3D11A0059A480 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806BA7523A3D11A0059A480 /* NetworkError.swift */; };
 		9806BA7823A3D1440059A480 /* ExtensionUIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806BA7723A3D1440059A480 /* ExtensionUIAlertController.swift */; };
+		98188B3123A7ADFB0093194F /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98188B3023A7ADFB0093194F /* SearchDetailViewController.swift */; };
+		98188B3323A7AE1C0093194F /* SearchDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98188B3223A7AE1C0093194F /* SearchDetailViewController.xib */; };
+		98188B3523A7AF1E0093194F /* SearchDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98188B3423A7AF1E0093194F /* SearchDetailViewModel.swift */; };
 		982979C423A51EB6001A3AF6 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982979C323A51EB6001A3AF6 /* BaseCollectionViewCell.swift */; };
 		982979C923A53B00001A3AF6 /* SearchListFilterAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982979C823A53B00001A3AF6 /* SearchListFilterAlertViewController.swift */; };
 		982979CB23A53B21001A3AF6 /* SearchListFilterAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 982979CA23A53B21001A3AF6 /* SearchListFilterAlertViewController.xib */; };
@@ -77,6 +80,9 @@
 		9806BA7223A3D02E0059A480 /* DailySearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySearchService.swift; sourceTree = "<group>"; };
 		9806BA7523A3D11A0059A480 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		9806BA7723A3D1440059A480 /* ExtensionUIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIAlertController.swift; sourceTree = "<group>"; };
+		98188B3023A7ADFB0093194F /* SearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
+		98188B3223A7AE1C0093194F /* SearchDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchDetailViewController.xib; sourceTree = "<group>"; };
+		98188B3423A7AF1E0093194F /* SearchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewModel.swift; sourceTree = "<group>"; };
 		982979C323A51EB6001A3AF6 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		982979C823A53B00001A3AF6 /* SearchListFilterAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListFilterAlertViewController.swift; sourceTree = "<group>"; };
 		982979CA23A53B21001A3AF6 /* SearchListFilterAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchListFilterAlertViewController.xib; sourceTree = "<group>"; };
@@ -198,6 +204,16 @@
 				9806BA7523A3D11A0059A480 /* NetworkError.swift */,
 			);
 			path = Errror;
+			sourceTree = "<group>";
+		};
+		98188B2F23A7ADD80093194F /* SearchDetail */ = {
+			isa = PBXGroup;
+			children = (
+				98188B3023A7ADFB0093194F /* SearchDetailViewController.swift */,
+				98188B3223A7AE1C0093194F /* SearchDetailViewController.xib */,
+				98188B3423A7AF1E0093194F /* SearchDetailViewModel.swift */,
+			);
+			path = SearchDetail;
 			sourceTree = "<group>";
 		};
 		982979C723A53ADB001A3AF6 /* SearchFilterAlert */ = {
@@ -384,6 +400,7 @@
 				989FDB6C23A4FE33004B2A0E /* SearchNavigationController.swift */,
 				989FDB7023A4FFBB004B2A0E /* SearchViewController.swift */,
 				989FDB7223A50622004B2A0E /* SearchViewModel.swift */,
+				98188B2F23A7ADD80093194F /* SearchDetail */,
 				982979C723A53ADB001A3AF6 /* SearchFilterAlert */,
 				989FDB7623A50AF9004B2A0E /* SearchListView */,
 			);
@@ -493,6 +510,7 @@
 				989F978F23A5BECC00339146 /* SearchFilterHeaderView.xib in Resources */,
 				9859144023A3CA7300798708 /* IntroViewController.xib in Resources */,
 				989FDB6F23A4FEBB004B2A0E /* Search.storyboard in Resources */,
+				98188B3323A7AE1C0093194F /* SearchDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,10 +607,12 @@
 				9859144423A3CAED00798708 /* ExtensionUIView.swift in Sources */,
 				989F979223A5C2AD00339146 /* NibLoadable.swift in Sources */,
 				9806BA7623A3D11A0059A480 /* NetworkError.swift in Sources */,
+				98188B3523A7AF1E0093194F /* SearchDetailViewModel.swift in Sources */,
 				989F978D23A5BE9900339146 /* SearchFilterHeaderView.swift in Sources */,
 				982E2B5A23A3BDBF00CD60EC /* SceneDelegate.swift in Sources */,
 				989F979423A5C51800339146 /* SearchListTableViewCell.swift in Sources */,
 				989FDB7823A50B2A004B2A0E /* BaseCollectionReusableView.swift in Sources */,
+				98188B3123A7ADFB0093194F /* SearchDetailViewController.swift in Sources */,
 				9806BA7323A3D02E0059A480 /* DailySearchService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

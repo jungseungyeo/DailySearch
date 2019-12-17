@@ -51,6 +51,7 @@ class SearchViewController: BaseViewController {
     
     override func setup() {
         super.setup()
+        title = ""
         setupKeyboard()
         setupNavigation()
         setupSearchListTableView()
@@ -123,6 +124,13 @@ class SearchViewController: BaseViewController {
                 }
                 
             }).disposed(by: bag)
+        
+        viewModel.output.moveDetailView
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (searchDetailViewController) in
+                guard let self = self else { return }
+                self.navigationController?.pushViewController(searchDetailViewController, animated: true)
+            }).disposed(by: bag)
     }
     
     override func viewDidLoad() {
@@ -156,9 +164,7 @@ class SearchViewController: BaseViewController {
     }
 }
 
-extension SearchViewController: UITableViewDelegate {
-    
-}
+extension SearchViewController: UITableViewDelegate { }
 
 extension SearchViewController: UITableViewDataSource {
     
@@ -206,6 +212,12 @@ extension SearchViewController: UITableViewDataSource {
         
         cell.bind(isSelected: false,
                   presentModel: viewModel.searchListPresentModels[indexPath.row])
+        
+        cell.rx.didTapCell
+            .map { _ -> Int in
+                return indexPath.row
+        }.bind(to: viewModel.input.didTapped)
+            .disposed(by: cell.bag)
         
         return cell
     }

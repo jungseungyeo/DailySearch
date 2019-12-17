@@ -67,6 +67,8 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
         
         public let searchTypeChanged = PublishRelay<(SearchType)>()
         public let searchListTypeChanged = PublishRelay<SearchListFilter>()
+        
+        public let didTapped = PublishRelay<Int>()
     }
     
     struct Output {
@@ -74,6 +76,8 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
         public let listFilterChoiceAlert = PublishRelay<SearchListFilterAlertViewController>()
         
         public let state = PublishRelay<SearchViewState>()
+        
+        public let moveDetailView = PublishRelay<SearchDetailViewController>()
     }
     
     public lazy var input: InputType = Input()
@@ -105,6 +109,8 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
         let kakaoDateFormat: String = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"
         let customDateFormat: String = "yyyy년 MM월 dd일"
         let customDetailDateFormat: String = "yyyy년 MM월 dd일 a hh:mm"
+        let todayString: String = "오늘"
+        let yesterDayString: String = "어제"
     }
     
     private let const = Const()
@@ -130,6 +136,14 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
                 guard let self = self else { return }
                 let searchListFilterAlertViewController = SearchListFilterAlertViewController.intance(viewModel: SearchListAlertViewModel(filterType: self.searchListFilterType))
                 self.output.listFilterChoiceAlert.accept(searchListFilterAlertViewController)
+            }).disposed(by: bag)
+        
+        input.didTapped
+            .subscribe(onNext: { [weak self] (index) in
+                guard let self = self else { return }
+                let searchListPresentModel = self.searchListPresentModels[index]
+                let vc = SearchDetailViewController.instance(searchViewModel: SearchDetailViewModel(model: searchListPresentModel))
+                self.output.moveDetailView.accept(vc)
             }).disposed(by: bag)
         
         requestAPIBind()
@@ -298,11 +312,28 @@ private extension SearchViewModel {
         return dateFormat.string(from: Date())
     }
     
+    func yesterDay() -> String {
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = const.customDateFormat
+        var date = Date()
+        date.addTimeInterval(-(60 * 60 * 24))
+        return dateFormat.string(from: date)
+    }
+    
     func dateParsing(dateString: String, isDetail: Bool = false) -> String {
         let dateForamt = DateFormatter()
         dateForamt.dateFormat = const.kakaoDateFormat
         let date = dateForamt.date(from: dateString) ?? Date()
         dateForamt.dateFormat = isDetail ? const.customDetailDateFormat : const.customDateFormat
-        return dateForamt.string(from: date)
+        let dateString = dateForamt.string(from: date)
+        if dateString == currentDay() {
+            return const.todayString
+        }
+        
+        if dateString == yesterDay() {
+            return const.yesterDayString
+        }
+        
+        return dateString
     }
 }

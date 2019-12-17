@@ -9,6 +9,14 @@
 import UIKit
 
 import Kingfisher
+import RxSwift
+import RxCocoa
+
+extension Reactive where Base: SearchListTableViewCell {
+    var didTapCell: Observable<Void> {
+        return base.didSelectedCell.rx.tap.asObservable()
+    }
+}
 
 class SearchListTableViewCell: BaseTableViewCell {
     
@@ -19,6 +27,9 @@ class SearchListTableViewCell: BaseTableViewCell {
     @IBOutlet weak var thumbnailImg: UIImageView!
 
     @IBOutlet weak var dimView: UIView!
+    @IBOutlet weak var didSelectedCell: UIButton!
+    
+    public var bag = DisposeBag()
     
     static let registerID = "\(SearchListTableViewCell.self)"
     
@@ -30,6 +41,7 @@ class SearchListTableViewCell: BaseTableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        bag = DisposeBag()
         thumbnailImg.image = const.placeHoderImg
     }
     
