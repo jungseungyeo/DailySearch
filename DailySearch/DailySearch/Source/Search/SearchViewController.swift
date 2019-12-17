@@ -162,6 +162,11 @@ class SearchViewController: BaseViewController {
     override func handleError(error: Error?) {
         super.handleError(error: error)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.searchListTableView.reloadData()
+    }
 }
 
 extension SearchViewController: UITableViewDelegate { }
@@ -210,7 +215,7 @@ extension SearchViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.bind(isSelected: false,
+        cell.bind(isSelected: viewModel.isDimCell(indexPath.row),
                   presentModel: viewModel.searchListPresentModels[indexPath.row])
         
         cell.rx.didTapCell
