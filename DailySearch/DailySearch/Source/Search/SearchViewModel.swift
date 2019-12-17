@@ -305,7 +305,7 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
     }
 }
 
-private extension SearchViewModel {
+extension SearchViewModel {
     func settingSearchInfo(info: JSON) -> SearchModel? {
         guard let dict = info.dictionaryObject else { return nil }
         return SearchModel(JSON: dict)
