@@ -40,10 +40,24 @@
                                     <outlet property="delegate" destination="HK2-va-ZM9" id="jAc-gw-ygX"/>
                                 </connections>
                             </tableView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="03v-sL-CFG">
+                                <rect key="frame" x="0.0" y="44" width="375" height="45"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="aHJ-by-Kps"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="HK2-va-ZM9" id="JEN-vc-FSk"/>
+                                    <outlet property="delegate" destination="HK2-va-ZM9" id="UXr-F7-uiR"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="R3P-a9-pua" secondAttribute="bottom" id="Cg9-1U-TR3"/>
+                            <constraint firstItem="03v-sL-CFG" firstAttribute="top" secondItem="R3P-a9-pua" secondAttribute="top" id="F1H-vL-eAf"/>
+                            <constraint firstItem="LRN-UB-nzU" firstAttribute="trailing" secondItem="03v-sL-CFG" secondAttribute="trailing" id="Jhh-N9-e4i"/>
+                            <constraint firstItem="03v-sL-CFG" firstAttribute="leading" secondItem="LRN-UB-nzU" secondAttribute="leading" id="UGu-5h-YT9"/>
                             <constraint firstItem="R3P-a9-pua" firstAttribute="leading" secondItem="LRN-UB-nzU" secondAttribute="leading" id="Z6a-17-psT"/>
                             <constraint firstItem="R3P-a9-pua" firstAttribute="top" secondItem="jTg-Jv-33K" secondAttribute="topMargin" id="j2n-B0-TPC"/>
                             <constraint firstItem="LRN-UB-nzU" firstAttribute="trailing" secondItem="R3P-a9-pua" secondAttribute="trailing" id="zh9-pQ-Jip"/>
@@ -52,6 +66,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Sso-g4-4CO"/>
                     <connections>
+                        <outlet property="recentSearchListTableView" destination="03v-sL-CFG" id="arF-hT-ESr"/>
+                        <outlet property="recentSearchListTableViewHeight" destination="aHJ-by-Kps" id="D1G-Pp-3DT"/>
                         <outlet property="searchListTableView" destination="R3P-a9-pua" id="JBc-2g-BTn"/>
                     </connections>
                 </viewController>

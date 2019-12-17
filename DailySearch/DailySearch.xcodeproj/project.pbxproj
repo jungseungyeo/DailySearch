@@ -63,6 +63,10 @@
 		989FDB7323A50622004B2A0E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989FDB7223A50622004B2A0E /* SearchViewModel.swift */; };
 		989FDB7523A50733004B2A0E /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989FDB7423A50733004B2A0E /* ExtensionString.swift */; };
 		989FDB7823A50B2A004B2A0E /* BaseCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989FDB7723A50B2A004B2A0E /* BaseCollectionReusableView.swift */; };
+		98FD9BD523A8F07300775C81 /* RecentSearchListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FD9BD423A8F07300775C81 /* RecentSearchListTableViewCell.swift */; };
+		98FD9BD723A8F09D00775C81 /* RecentSearchListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98FD9BD623A8F09D00775C81 /* RecentSearchListTableViewCell.xib */; };
+		98FD9BDA23A9001B00775C81 /* SearchWebPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FD9BD923A9001B00775C81 /* SearchWebPageViewModel.swift */; };
+		98FD9BDD23A905F400775C81 /* ExtensionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FD9BDC23A905F400775C81 /* ExtensionCollection.swift */; };
 		DF06F5960224551E26B0AA83 /* libPods-DailySearch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B24EAEA8911FA86554E32A /* libPods-DailySearch.a */; };
 /* End PBXBuildFile section */
 
@@ -138,6 +142,10 @@
 		989FDB7223A50622004B2A0E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		989FDB7423A50733004B2A0E /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
 		989FDB7723A50B2A004B2A0E /* BaseCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionReusableView.swift; sourceTree = "<group>"; };
+		98FD9BD423A8F07300775C81 /* RecentSearchListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchListTableViewCell.swift; sourceTree = "<group>"; };
+		98FD9BD623A8F09D00775C81 /* RecentSearchListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentSearchListTableViewCell.xib; sourceTree = "<group>"; };
+		98FD9BD923A9001B00775C81 /* SearchWebPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWebPageViewModel.swift; sourceTree = "<group>"; };
+		98FD9BDC23A905F400775C81 /* ExtensionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCollection.swift; sourceTree = "<group>"; };
 		ABCF15821E6EB20B241E722A /* Pods-DailySearchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailySearchTests.release.xcconfig"; path = "Target Support Files/Pods-DailySearchTests/Pods-DailySearchTests.release.xcconfig"; sourceTree = "<group>"; };
 		CC1781236F308883FF6DD263 /* Pods-DailySearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailySearch.debug.xcconfig"; path = "Target Support Files/Pods-DailySearch/Pods-DailySearch.debug.xcconfig"; sourceTree = "<group>"; };
 		D5458B6063B97C35858BD1F2 /* libPods-DailySearchTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DailySearchTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,6 +234,7 @@
 		982785A423A8DD6600580A6C /* WebPage */ = {
 			isa = PBXGroup;
 			children = (
+				98FD9BD923A9001B00775C81 /* SearchWebPageViewModel.swift */,
 				982785A523A8DD7C00580A6C /* SearchWebPageViewController.swift */,
 				982785A723A8DDED00580A6C /* SearchWebPageViewController.xib */,
 			);
@@ -352,6 +361,7 @@
 				9806BA7723A3D1440059A480 /* ExtensionUIAlertController.swift */,
 				989FDB7423A50733004B2A0E /* ExtensionString.swift */,
 				986BE20523A605F7003A3002 /* ExtensionReactive.swift */,
+				98FD9BDC23A905F400775C81 /* ExtensionCollection.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -417,6 +427,7 @@
 				989FDB6C23A4FE33004B2A0E /* SearchNavigationController.swift */,
 				989FDB7023A4FFBB004B2A0E /* SearchViewController.swift */,
 				989FDB7223A50622004B2A0E /* SearchViewModel.swift */,
+				98FD9BD323A8F04B00775C81 /* RecentSearch */,
 				98188B2F23A7ADD80093194F /* SearchDetail */,
 				982979C723A53ADB001A3AF6 /* SearchFilterAlert */,
 				989FDB7623A50AF9004B2A0E /* SearchListView */,
@@ -433,6 +444,15 @@
 				989F979523A5C54100339146 /* SearchListTableViewCell.xib */,
 			);
 			path = SearchListView;
+			sourceTree = "<group>";
+		};
+		98FD9BD323A8F04B00775C81 /* RecentSearch */ = {
+			isa = PBXGroup;
+			children = (
+				98FD9BD423A8F07300775C81 /* RecentSearchListTableViewCell.swift */,
+				98FD9BD623A8F09D00775C81 /* RecentSearchListTableViewCell.xib */,
+			);
+			path = RecentSearch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -522,6 +542,7 @@
 				989F979623A5C54100339146 /* SearchListTableViewCell.xib in Resources */,
 				982979CB23A53B21001A3AF6 /* SearchListFilterAlertViewController.xib in Resources */,
 				982785A823A8DDED00580A6C /* SearchWebPageViewController.xib in Resources */,
+				98FD9BD723A8F09D00775C81 /* RecentSearchListTableViewCell.xib in Resources */,
 				982E2B6123A3BDC000CD60EC /* Assets.xcassets in Resources */,
 				982E2B7A23A3BE7400CD60EC /* README.md in Resources */,
 				982979D223A53EF0001A3AF6 /* SearchListFilterAlertTableViewCell.xib in Resources */,
@@ -615,6 +636,7 @@
 				989FDB7123A4FFBB004B2A0E /* SearchViewController.swift in Sources */,
 				989F979823A5C95200339146 /* SearchListAlertViewModel.swift in Sources */,
 				9859143E23A3C9A700798708 /* BaseNavigationViewController.swift in Sources */,
+				98FD9BD523A8F07300775C81 /* RecentSearchListTableViewCell.swift in Sources */,
 				982979C923A53B00001A3AF6 /* SearchListFilterAlertViewController.swift in Sources */,
 				989FDB7523A50733004B2A0E /* ExtensionString.swift in Sources */,
 				98972D2E23A4757C001BB4E9 /* SearchModel.swift in Sources */,
@@ -631,6 +653,8 @@
 				989F978D23A5BE9900339146 /* SearchFilterHeaderView.swift in Sources */,
 				982E2B5A23A3BDBF00CD60EC /* SceneDelegate.swift in Sources */,
 				989F979423A5C51800339146 /* SearchListTableViewCell.swift in Sources */,
+				98FD9BDD23A905F400775C81 /* ExtensionCollection.swift in Sources */,
+				98FD9BDA23A9001B00775C81 /* SearchWebPageViewModel.swift in Sources */,
 				989FDB7823A50B2A004B2A0E /* BaseCollectionReusableView.swift in Sources */,
 				98188B3123A7ADFB0093194F /* SearchDetailViewController.swift in Sources */,
 				9806BA7323A3D02E0059A480 /* DailySearchService.swift in Sources */,

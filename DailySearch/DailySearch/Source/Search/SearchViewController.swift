@@ -11,9 +11,21 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+enum SearchViewControllerTableViewType: Int {
+    case searchList = 1
+    case recnetList = 2
+    
+    var tag: Int {
+        return self.rawValue
+    }
+
+}
+
 class SearchViewController: BaseViewController {
     
     @IBOutlet weak var searchListTableView: UITableView!
+    @IBOutlet weak var recentSearchListTableView: UITableView!
+    @IBOutlet weak var recentSearchListTableViewHeight: NSLayoutConstraint!
     
     private let viewModel = SearchViewModel()
     private let bag = DisposeBag()
@@ -45,6 +57,9 @@ class SearchViewController: BaseViewController {
         
         let searchFilterHeaderHeight: CGFloat = 50
         let saerchListHeight: CGFloat = 143
+        
+        let recentCellHeight: CGFloat = 45
+        let recentTableMaxHeight: CGFloat = 225
     }
     
     private let const = Const()
@@ -55,6 +70,7 @@ class SearchViewController: BaseViewController {
         setupKeyboard()
         setupNavigation()
         setupSearchListTableView()
+        setupRecentListTableView()
     }
     
     private func setupKeyboard() {
@@ -79,10 +95,21 @@ class SearchViewController: BaseViewController {
     }
     
     private func setupSearchListTableView() {
+        searchListTableView.tag = SearchViewControllerTableViewType.searchList.tag
         searchListTableView.separatorStyle = .singleLine
         searchListTableView.tableFooterView = UIView()
         searchListTableView.register(UINib(nibName: "SearchListTableViewCell", bundle: nil),
                                      forCellReuseIdentifier: SearchListTableViewCell.registerID)
+    }
+    
+    private func setupRecentListTableView() {
+        recentSearchListTableView.tag = SearchViewControllerTableViewType.recnetList.tag
+        recentSearchListTableView.bounces = false
+        recentSearchListTableView.isHidden = true
+        recentSearchListTableView.separatorStyle = .singleLine
+        recentSearchListTableView.tableFooterView = UIView()
+        recentSearchListTableView.register(UINib(nibName: "RecentSearchListTableViewCell", bundle: nil),
+                                           forCellReuseIdentifier: RecentSearchListTableViewCell.registerID)
     }
     
     override func bind() {
@@ -114,6 +141,7 @@ class SearchViewController: BaseViewController {
                 guard let self = self else { return }
                 switch state {
                 case .requesting:
+                    self.searchbar.endEditing(true)
                     self.indicator.startAnimating()
                 case .complete:
                     self.indicator.stopAnimating()
@@ -129,7 +157,19 @@ class SearchViewController: BaseViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] (searchDetailViewController) in
                 guard let self = self else { return }
+                self.searchbar.endEditing(true)
+                self.recentSearchListTableView.isHidden = true
                 self.navigationController?.pushViewController(searchDetailViewController, animated: true)
+            }).disposed(by: bag)
+        
+        viewModel.output.isRecentShow
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (isShow) in
+                guard let self = self else { return }
+                let height = CGFloat((UserDefaultManager.recentList?.count ?? 0)) * self.const.recentCellHeight
+                self.recentSearchListTableViewHeight.constant = height < self.const.recentTableMaxHeight ? height : self.const.recentTableMaxHeight
+                self.recentSearchListTableView.reloadData()
+                self.recentSearchListTableView.isHidden = isShow
             }).disposed(by: bag)
     }
     
@@ -169,7 +209,27 @@ class SearchViewController: BaseViewController {
     }
 }
 
-extension SearchViewController: UITableViewDelegate { }
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let type = SearchViewControllerTableViewType.init(rawValue: tableView.tag) else { return }
+        switch type {
+        case .searchList:
+            searchListTableView(tableView, didSelectRowAt: indexPath)
+        case .recnetList:
+            recentTableView(tableView, didSelectRowAt: indexPath)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let type = SearchViewControllerTableViewType.init(rawValue: tableView.tag) else { return }
+        switch type {
+        case .searchList:
+            searchListTableView(tableView, willDisplay: cell, forRowAt: indexPath)
+        case .recnetList:
+            recentTableView(tableView, willDisplay: cell, forRowAt: indexPath)
+        }
+    }
+}
 
 extension SearchViewController: UITableViewDataSource {
     
@@ -178,18 +238,79 @@ extension SearchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.searchListPresentModels.count
+        guard let type = SearchViewControllerTableViewType.init(rawValue: tableView.tag) else { return 0 }
+        switch type {
+        case .searchList:
+            return searchListTableView(tableView, numberOfRowsInSection: section)
+        case .recnetList:
+            return recentTableView(tableView, numberOfRowsInSection: section)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return const.searchFilterHeaderHeight
+        guard let type = SearchViewControllerTableViewType.init(rawValue: tableView.tag) else { return 0 }
+        switch type {
+        case .searchList:
+            return searchListTableView(tableView, heightForHeaderInSection: section)
+        case .recnetList:
+            return recentTableView(tableView, heightForHeaderInSection: section)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return const.saerchListHeight
+        guard let type = SearchViewControllerTableViewType.init(rawValue: tableView.tag) else { return 0 }
+        switch type {
+        case .searchList:
+            return searchListTableView(tableView, heightForRowAt: indexPath)
+        case .recnetList:
+            return recentTableView(tableView, heightForRowAt: indexPath)
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let type = SearchViewControllerTableViewType.init(rawValue: tableView.tag) else { return nil }
+        switch type {
+        case .searchList:
+            return searchListTableView(tableView, viewForHeaderInSection: section)
+        case .recnetList:
+            return recentTableView(tableView, viewForHeaderInSection: section)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let type = SearchViewControllerTableViewType.init(rawValue: tableView.tag) else { return UITableViewCell() }
+        switch type {
+        case .searchList:
+            return searchListTableView(tableView, cellForRowAt: indexPath)
+        case .recnetList:
+            return recentTableView(tableView, cellForRowAt: indexPath)
+        }
+    }
+}
+
+extension SearchViewController {
+    
+    func searchListTableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { }
+    
+    func searchListTableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if viewModel.searchListPresentModels.count - 3 == indexPath.row {
+            viewModel.input.pagingRequet.accept(())
+        }
+    }
+    
+    func searchListTableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return const.searchFilterHeaderHeight
+    }
+    
+    func searchListTableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.searchListPresentModels.count
+    }
+    
+    func searchListTableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return const.saerchListHeight
+    }
+    
+    func searchListTableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerFilterView = SearchFilterHeaderView.loadFromNib() else {
             return nil
         }
@@ -210,33 +331,81 @@ extension SearchViewController: UITableViewDataSource {
         return headerFilterView
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func searchListTableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchListTableViewCell.registerID, for: indexPath) as? SearchListTableViewCell else {
             return UITableViewCell()
         }
+    
+        guard let presentModel = viewModel.searchListPresentModels[safe: indexPath.row] else { return cell }
         
         cell.bind(isSelected: viewModel.isDimCell(indexPath.row),
-                  presentModel: viewModel.searchListPresentModels[indexPath.row])
+                  presentModel: presentModel)
         
         cell.rx.didTapCell
             .map { _ -> Int in
                 return indexPath.row
         }.bind(to: viewModel.input.didTapped)
             .disposed(by: cell.bag)
+        return cell
+    }
+}
+
+extension SearchViewController {
+    
+    func recentTableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { }
+    
+    func recentTableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) { }
+    
+    func recentTableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func recentTableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.recentListCount
+    }
+    
+    func recentTableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return const.recentCellHeight
+    }
+    
+    func recentTableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return nil
+    }
+    
+    func recentTableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: RecentSearchListTableViewCell.registerID, for: indexPath) as? RecentSearchListTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        cell.bind(viewModel.recentSearchText(indexPath.row))
+        
+        cell.rx.recetnCellTapped
+            .filter { [weak self] (recentTitle) -> Bool in
+                guard let self = self else { return false }
+                self.searchbar.text = recentTitle
+                return (recentTitle ?? "").isNotEmpty()
+        }.map { $0 ?? "" }
+            .bind(to: viewModel.input.searchText)
+            .disposed(by: cell.bag)
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        if viewModel.searchListPresentModels.count - 3 == indexPath.row {
-            viewModel.input.pagingRequet.accept(())
-        }
-    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        viewModel.input.searchTapped.accept(true)
+    }
     
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        viewModel.input.searchTapped.accept(false)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchbar.text else { return }
+        viewModel.input.searchText.accept(searchText)
+    }
 }
 
 extension SearchViewController: SearchListFilterDelegate {

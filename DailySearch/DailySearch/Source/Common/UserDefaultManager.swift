@@ -10,6 +10,7 @@ import Foundation
 
 enum UserDefaultKey<T>: String, CustomStringConvertible {
     case clickUrls
+    case recentList
     
     var description: String {
         return self.rawValue
@@ -39,5 +40,10 @@ class UserDefaultManager: NSObject {
     static var clicUrls: [String]? {
         set { self.setValue(.clickUrls, value: newValue) }
         get { self.getValue(.clickUrls) }
+    }
+    
+    static var recentList: [String]? {
+        set { self.setValue(.recentList, value: newValue) }
+        get { self.getValue(.recentList) }
     }
 }

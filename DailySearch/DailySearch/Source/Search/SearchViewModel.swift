@@ -70,6 +70,8 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
         public let searchListTypeChanged = PublishRelay<SearchListFilter>()
         
         public let didTapped = PublishRelay<Int>()
+        
+        public let searchTapped = PublishRelay<Bool>()
     }
     
     struct Output {
@@ -79,6 +81,7 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
         public let state = PublishRelay<SearchViewState>()
         
         public let moveDetailView = PublishRelay<SearchDetailViewController>()
+        public let isRecentShow = PublishRelay<Bool>()
     }
     
     public lazy var input: InputType = Input()
@@ -116,6 +119,10 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
     
     private let const = Const()
     
+    public var recentListCount: Int {
+        return (UserDefaultManager.recentList ?? []).count
+    }
+    
     override init() {
         super.init()
         
@@ -142,9 +149,15 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
         input.didTapped
             .subscribe(onNext: { [weak self] (index) in
                 guard let self = self else { return }
-                let searchListPresentModel = self.searchListPresentModels[index]
+                guard let searchListPresentModel = self.searchListPresentModels[safe: index] else { return }
                 let vc = SearchDetailViewController.instance(searchViewModel: SearchDetailViewModel(model: searchListPresentModel))
                 self.output.moveDetailView.accept(vc)
+            }).disposed(by: bag)
+        
+        input.searchTapped
+            .subscribe(onNext: { [weak self] (isNotShow) in
+                guard let self = self else { return }
+                self.output.isRecentShow.accept(!isNotShow)
             }).disposed(by: bag)
         
         requestAPIBind()
@@ -159,6 +172,7 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
                 guard let self = self else { return }
                 self.reset()
                 self.searchingText = searchText
+                self.saveRecentList(searchText)
                 self.input.requestAPI.accept(searchText)
             }).disposed(by: bag)
         
@@ -281,8 +295,13 @@ final class SearchViewModel: NSObject, ReactiveViewModelable {
     
     func isDimCell(_ index: Int) -> Bool {
         guard let clickLinks = UserDefaultManager.clicUrls else { return false }
-        let urlString = searchListPresentModels[index].urlString
+        guard let urlString = searchListPresentModels[safe: index]?.urlString else { return false}
         return (clickLinks.filter { $0 == urlString }).count > 0
+    }
+    
+    func recentSearchText(_ index: Int) -> String? {
+        guard let recentList = UserDefaultManager.recentList else { return nil }
+        return recentList[safe: index]
     }
 }
 
@@ -343,5 +362,12 @@ private extension SearchViewModel {
         }
         
         return dateString
+    }
+    
+    func saveRecentList(_ searchText: String) {
+        var recentList = UserDefaultManager.recentList ?? []
+        guard (recentList.filter { $0 == searchText }).count == 0 else { return }
+        recentList.append(searchText)
+        UserDefaultManager.recentList = recentList
     }
 }
