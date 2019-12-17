@@ -67,6 +67,8 @@
 		98FD9BD723A8F09D00775C81 /* RecentSearchListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98FD9BD623A8F09D00775C81 /* RecentSearchListTableViewCell.xib */; };
 		98FD9BDA23A9001B00775C81 /* SearchWebPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FD9BD923A9001B00775C81 /* SearchWebPageViewModel.swift */; };
 		98FD9BDD23A905F400775C81 /* ExtensionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FD9BDC23A905F400775C81 /* ExtensionCollection.swift */; };
+		98FD9BE023A90C5C00775C81 /* SearchViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FD9BDF23A90C5C00775C81 /* SearchViewModelTest.swift */; };
+		98FD9BE323A913AF00775C81 /* UserDefaultTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FD9BE223A913AF00775C81 /* UserDefaultTest.swift */; };
 		DF06F5960224551E26B0AA83 /* libPods-DailySearch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B24EAEA8911FA86554E32A /* libPods-DailySearch.a */; };
 /* End PBXBuildFile section */
 
@@ -146,6 +148,8 @@
 		98FD9BD623A8F09D00775C81 /* RecentSearchListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentSearchListTableViewCell.xib; sourceTree = "<group>"; };
 		98FD9BD923A9001B00775C81 /* SearchWebPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWebPageViewModel.swift; sourceTree = "<group>"; };
 		98FD9BDC23A905F400775C81 /* ExtensionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCollection.swift; sourceTree = "<group>"; };
+		98FD9BDF23A90C5C00775C81 /* SearchViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTest.swift; sourceTree = "<group>"; };
+		98FD9BE223A913AF00775C81 /* UserDefaultTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultTest.swift; sourceTree = "<group>"; };
 		ABCF15821E6EB20B241E722A /* Pods-DailySearchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailySearchTests.release.xcconfig"; path = "Target Support Files/Pods-DailySearchTests/Pods-DailySearchTests.release.xcconfig"; sourceTree = "<group>"; };
 		CC1781236F308883FF6DD263 /* Pods-DailySearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailySearch.debug.xcconfig"; path = "Target Support Files/Pods-DailySearch/Pods-DailySearch.debug.xcconfig"; sourceTree = "<group>"; };
 		D5458B6063B97C35858BD1F2 /* libPods-DailySearchTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DailySearchTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -301,6 +305,8 @@
 				987AD29F23A481F000C186FD /* TestUtil.swift */,
 				987AD2A823A4837400C186FD /* BlogTest */,
 				989FDB6623A4FC3D004B2A0E /* CafeTest */,
+				98FD9BDE23A90C3900775C81 /* SearchViewModelTest */,
+				98FD9BE123A9139A00775C81 /* UserDefaultTest */,
 				982E2B7023A3BDC100CD60EC /* Info.plist */,
 			);
 			path = DailySearchTests;
@@ -453,6 +459,22 @@
 				98FD9BD623A8F09D00775C81 /* RecentSearchListTableViewCell.xib */,
 			);
 			path = RecentSearch;
+			sourceTree = "<group>";
+		};
+		98FD9BDE23A90C3900775C81 /* SearchViewModelTest */ = {
+			isa = PBXGroup;
+			children = (
+				98FD9BDF23A90C5C00775C81 /* SearchViewModelTest.swift */,
+			);
+			path = SearchViewModelTest;
+			sourceTree = "<group>";
+		};
+		98FD9BE123A9139A00775C81 /* UserDefaultTest */ = {
+			isa = PBXGroup;
+			children = (
+				98FD9BE223A913AF00775C81 /* UserDefaultTest.swift */,
+			);
+			path = UserDefaultTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -667,7 +689,9 @@
 			files = (
 				987AD2AA23A4838E00C186FD /* BlogNetworkerTest.swift in Sources */,
 				987AD2A023A481F000C186FD /* TestUtil.swift in Sources */,
+				98FD9BE023A90C5C00775C81 /* SearchViewModelTest.swift in Sources */,
 				989FDB6A23A4FC48004B2A0E /* CafeNetworkerTest.swift in Sources */,
+				98FD9BE323A913AF00775C81 /* UserDefaultTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

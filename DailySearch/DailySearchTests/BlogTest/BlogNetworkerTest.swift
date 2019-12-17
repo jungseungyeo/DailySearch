@@ -60,7 +60,6 @@ class BlogNetworkerTest: XCTestCase {
         }
     
         for document in documents {
-            XCTAssertEqual(document.searchType, .blog)
             XCTAssertNotNil(document.contents)
             XCTAssertNotNil(document.dateTime)
             XCTAssertNotNil(document.thumbnail)
@@ -112,7 +111,6 @@ class BlogNetworkerTest: XCTestCase {
             XCTAssertEqual(documents.count, 25)
             
             for document in documents {
-                XCTAssertEqual(document.searchType, .blog)
                 XCTAssertNotNil(document.contents)
                 XCTAssertNotNil(document.dateTime)
                 XCTAssertNotNil(document.thumbnail)
