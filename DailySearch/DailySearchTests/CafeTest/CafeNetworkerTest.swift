@@ -58,7 +58,6 @@ class CafeNetworkerTest: XCTestCase {
         }
         
         for document in documents {
-            XCTAssertEqual(document.searchType, .cafe)
             XCTAssertNotNil(document.contents)
             XCTAssertNotNil(document.dateTime)
             XCTAssertNotNil(document.thumbnail)
@@ -110,7 +109,6 @@ class CafeNetworkerTest: XCTestCase {
             XCTAssertEqual(documents.count, 25)
             
             for document in documents {
-                XCTAssertEqual(document.searchType, .cafe)
                 XCTAssertNotNil(document.contents)
                 XCTAssertNotNil(document.dateTime)
                 XCTAssertNotNil(document.thumbnail)
