@@ -30,7 +30,9 @@ class SearchWebPageViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        webView.loadRequest(URLRequest(url: self.requestURL!))
+        if let requestURL = requestURL {
+            webView.loadRequest(URLRequest(url: requestURL))
+        }
     }
     
 }
